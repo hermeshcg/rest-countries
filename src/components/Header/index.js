@@ -11,7 +11,7 @@ function Header({ toggleTheme }) {
         <FaMoon
           color={(props) => (props.theme.mode === 'dark' ? '#fff' : '#121212')}
         />
-        <span>Dark Mode</span>
+        <p>Dark Mode</p>
       </div>
     </Container>
   );

@@ -13,13 +13,16 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  h1 {
+    padding-left: 40px;
+  }
+
   .theme {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
     cursor: pointer;
-    span {
+    p {
       padding-left: 10px;
     }
   }
