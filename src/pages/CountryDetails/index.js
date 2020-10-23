@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
-
-import GlobalStyle from './styles/global';
-
-import Routes from './routes';
 import { ThemeProvider } from 'styled-components';
+import Header from '../../components/Header';
 
-function App() {
+import { Container } from './styles';
+
+function Home() {
   const [theme, setTheme] = useState({ mode: 'dark' });
 
   const toggleTheme = () => {
     setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' });
   };
+
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
-      <GlobalStyle />
+      <Header toggleTheme={toggleTheme} />
+      <Container></Container>
     </ThemeProvider>
   );
 }
 
-export default App;
+export default Home;

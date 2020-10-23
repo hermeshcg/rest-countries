@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-
-import GlobalStyle from './styles/global';
-
-import Routes from './routes';
 import { ThemeProvider } from 'styled-components';
+import Header from '../../components/Header';
 
-function App() {
+import { Container } from './styles';
+
+function Home() {
   const [theme, setTheme] = useState({ mode: 'dark' });
 
   const toggleTheme = () => {
@@ -13,10 +12,11 @@ function App() {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
-      <GlobalStyle />
+      <Container>
+        <Header toggleTheme={toggleTheme} />
+      </Container>
     </ThemeProvider>
   );
 }
 
-export default App;
+export default Home;
