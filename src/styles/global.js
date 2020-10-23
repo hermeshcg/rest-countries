@@ -8,11 +8,6 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body{
-    background: ${(props) =>
-      props.theme.mode === 'dark' ? 'hsl(207, 26%, 17%)' : 'hsl(0, 0%, 100%)'};
-  }
-
   h1{
     font: 26px Nunito, sans-serif;
     font-weight: bold;
