@@ -11,6 +11,23 @@ import { Container } from './styles';
 import { Link } from 'react-router-dom';
 
 function Home() {
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      padding: 20,
+    }),
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      width: 200,
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+
+      return { ...provided, opacity, transition };
+    },
+  };
+
   const options = [
     { value: 'africa', label: 'Africa' },
     { value: 'america', label: 'America' },
@@ -45,7 +62,7 @@ function Home() {
           </div>
 
           <div className="search-by-region">
-            <Select options={options} />
+            <Select options={options} styles={customStyles} />
           </div>
         </div>
 
