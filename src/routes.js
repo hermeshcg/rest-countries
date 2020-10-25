@@ -9,7 +9,7 @@ function Routes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/country" exact component={CountryDetails} />
+        <Route path="/country/:name" exact component={CountryDetails} />
       </Switch>
     </BrowserRouter>
   );

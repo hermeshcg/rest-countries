@@ -64,6 +64,7 @@ export const Container = styled.div`
     margin: 30px;
 
     .country-card {
+      text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -73,9 +74,10 @@ export const Container = styled.div`
       background: ${(props) =>
         props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
       img {
-        width: 240px;
+        width: 100%;
         height: 150px;
-        padding-bottom: 5px;
+        object-fit: cover;
+        margin-bottom: auto;
       }
       h5 {
         color: ${(props) =>

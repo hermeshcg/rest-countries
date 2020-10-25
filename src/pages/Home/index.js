@@ -68,10 +68,13 @@ function Home() {
 
         <div className="countries-container">
           {countries.map((country) => (
-            <div key={country.name} className="country-card">
-              <Link to="/">
-                <img src={country.flag} alt={country.name} />
-              </Link>
+            <Link
+              to={`/country/${country.name}`}
+              key={country.name}
+              className="country-card"
+            >
+              <img src={country.flag} alt={country.name} />
+
               <h5>{country.name}</h5>
               <strong>
                 Population: <span>{country.population}</span>
@@ -82,7 +85,7 @@ function Home() {
               <strong>
                 Capital: <span>{country.capital}</span>
               </strong>
-            </div>
+            </Link>
           ))}
         </div>
       </Container>
