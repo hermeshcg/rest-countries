@@ -115,7 +115,6 @@ function Home() {
                 placeholder="Select region"
                 isSearchable
                 /*onChange={setRegion} */
-                autoFocus
               />
             </div>
           </form>

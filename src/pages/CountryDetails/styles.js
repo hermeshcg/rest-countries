@@ -47,7 +47,8 @@ export const Container = styled.div`
     img {
       width: 500px;
       height: 350px;
-      margin-right: 150px;
+      margin-right: 100px;
+      margin-left: 100px;
     }
 
     .right-side {
@@ -65,41 +66,63 @@ export const Container = styled.div`
         margin-top: 0;
       }
 
-      .country-content {
+      .country-infos {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .c1 {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: start;
           justify-content: center;
           strong {
             color: ${(props) =>
               props.theme.mode === 'dark' ? '#fff' : '#121212'};
-            font-weight: bold;
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 10px;
             span {
               color: ${(props) =>
-                props.theme.mode === 'dark' ? '#aaa' : '#121212'};
+                props.theme.mode === 'dark' ? '#eee' : '#121212'};
             }
           }
         }
+
         .c2 {
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: start;
           justify-content: center;
+          margin-left: 50px;
+          margin-bottom: auto;
+
           strong {
             color: ${(props) =>
               props.theme.mode === 'dark' ? '#fff' : '#121212'};
-            font-weight: bold;
-            font-size: 18px;
+            margin-bottom: 10px;
+            font-size: 16px;
             span {
               color: ${(props) =>
-                props.theme.mode === 'dark' ? '#aaa' : '#121212'};
+                props.theme.mode === 'dark' ? '#eee' : '#121212'};
             }
           }
+        }
+      }
+
+      .border-countries {
+        text-align: start;
+        margin-top: 20px;
+        color: ${(props) => (props.theme.mode === 'dark' ? '#fff' : '#121212')};
+
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        width: 100%;
+
+        strong {
+          font-weight: bold;
+          font-size: 16px;
         }
       }
     }
