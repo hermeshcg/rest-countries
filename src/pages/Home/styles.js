@@ -36,25 +36,6 @@ export const Container = styled.div`
         color: ${(props) =>
           props.theme.mode === 'dark' ? 'hsl(0, 0%, 100%)' : 'hsl(0, 0%, 52%)'};
       }
-
-      .search-by-region {
-        .select-selected:after {
-          position: absolute;
-          content: '';
-          top: 14px;
-          right: 10px;
-          width: 0;
-          height: 0;
-          border: 6px solid transparent;
-          border-color: #fff transparent transparent transparent;
-        }
-
-        /* Point the arrow upwards when the select box is open (active): */
-        .select-selected.select-arrow-active:after {
-          border-color: transparent transparent #fff transparent;
-          top: 7px;
-        }
-      }
     }
   }
 

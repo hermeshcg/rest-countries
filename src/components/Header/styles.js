@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: ${(props) =>
     props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
-  width: 100vw;
+  width: 100%;
   height: 100px;
   color: ${(props) =>
     props.theme.mode === 'dark' ? 'hsl(0, 0%, 100%)' : 'hsl(200, 15%, 8%)'};

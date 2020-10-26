@@ -11,23 +11,13 @@ import { Container } from './styles';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const customStyles = {
-    option: (provided, state) => ({
-      ...provided,
-      padding: 20,
-    }),
-    control: () => ({
-      // none of react-select's styles are passed to <Control />
-      width: 200,
-    }),
-    singleValue: (provided, state) => {
-      const opacity = state.isDisabled ? 0.5 : 1;
-      const transition = 'opacity 300ms';
-
-      return { ...provided, opacity, transition };
-    },
-  };
-
+  const [theme, setTheme] = useState({ mode: 'dark' });
+  const [countries, setCountries] = useState([{}]);
+  /*  const [country, setCountry] = useState('');
+  const [contentSelectedCountry, setContentSelectedCountry] = useState({});
+  const [region, setRegion] = useState('');
+  const [contentSelectedRegion, setcontentSelectedRegion] = useState([{}]);
+ */
   const options = [
     { value: 'africa', label: 'Africa' },
     { value: 'america', label: 'America' },
@@ -36,34 +26,99 @@ function Home() {
     { value: 'oceania', label: 'Oceania' },
   ];
 
-  const [theme, setTheme] = useState({ mode: 'dark' });
-  const [countries, setCountries] = useState([{}]);
-
-  const toggleTheme = () => {
+  function toggleTheme() {
     setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' });
-  };
+  }
 
   useEffect(() => {
-    api.get('all').then((response) => {
-      setCountries(response.data);
-    });
+    async function getData() {
+      await api.get('all').then((response) => {
+        setCountries(response.data);
+      });
+    }
+    getData();
   }, []);
 
-  console.log(countries);
+  /* async function handleSearchForCountry(event) {
+    event.preventDefault();
+    const response = await api.get(`name/${country}`);
+    const data = response.data;
+    setContentSelectedCountry(data);
+  }
+
+  async function handleSearchByRegion(event) {
+    event.preventDefault();
+    const response = await api.get(`region/${region.value}`);
+    const data = response.data;
+    setcontentSelectedRegion(data);
+    setCountries(contentSelectedRegion);
+  }
+  console.log({ contentSelectedRegion, region });
+ */
+  const customStyles = {
+    placeholder: (base) => ({
+      ...base,
+      color: '#fff',
+      fontFamily: 'Nunito, sans-serif',
+    }),
+    control: (base, state) => ({
+      ...base,
+      background: 'hsl(209, 23%, 22%)',
+      // match with the menu
+      borderRadius: state.isFocused ? '3px 3px 0 0' : 3,
+      // Overwrittes the different states of border
+      color: '#fff',
+      border: 'none',
+      // Removes weird border around container
+      width: '200px',
+      height: '100%',
+    }),
+    option: (base) => ({
+      ...base,
+      // override border radius to match the box
+      borderRadius: 0,
+      // kill the gap
+      marginTop: 0,
+      width: '200px',
+      fontFamily: 'Nunito, sans-serif',
+      color: '#ccc',
+      background: 'hsl(207, 26%, 17%)',
+    }),
+    menuList: (base) => ({
+      ...base,
+      // kill the white space on first and last option
+      padding: 0,
+    }),
+  };
 
   return (
     <ThemeProvider theme={theme}>
       <Header toggleTheme={toggleTheme} />
       <Container>
         <div className="container-search">
-          <div className="input-area">
+          <form /* onSubmit={handleSearchForCountry} */ className="input-area">
             <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
-            <input type="text" placeholder="Search for a country" />
-          </div>
+            <input
+              type="text"
+              placeholder="Search for a country"
+              /*               onChange={(e) => {
+                setCountry(e.target.value);
+              }} */
+            />
+          </form>
 
-          <div className="search-by-region">
-            <Select options={options} styles={customStyles} />
-          </div>
+          <form /* onSubmit={handleSearchByRegion} */>
+            <div className="search-by-region">
+              <Select
+                options={options}
+                styles={customStyles}
+                placeholder="Select region"
+                isSearchable
+                /*onChange={setRegion} */
+                autoFocus
+              />
+            </div>
+          </form>
         </div>
 
         <div className="countries-container">
