@@ -115,14 +115,29 @@ export const Container = styled.div`
         color: ${(props) => (props.theme.mode === 'dark' ? '#fff' : '#121212')};
 
         display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
         width: 100%;
 
         strong {
           font-weight: bold;
           font-size: 16px;
+        }
+
+        .border-link {
+          font: 14px Nunito, sans-serif;
+          text-decoration: none;
+          color: ${(props) =>
+            props.theme.mode === 'dark' ? '#fff' : '#121212'};
+
+          padding: 5px;
+          margin: 0 5px;
+
+          background: ${(props) =>
+            props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
+          border-radius: 4px;
+          border: none;
         }
       }
     }

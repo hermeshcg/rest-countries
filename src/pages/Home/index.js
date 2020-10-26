@@ -13,11 +13,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [theme, setTheme] = useState({ mode: 'dark' });
   const [countries, setCountries] = useState([{}]);
-  /*  const [country, setCountry] = useState('');
-  const [contentSelectedCountry, setContentSelectedCountry] = useState({});
-  const [region, setRegion] = useState('');
-  const [contentSelectedRegion, setcontentSelectedRegion] = useState([{}]);
- */
+
   const options = [
     { value: 'africa', label: 'Africa' },
     { value: 'america', label: 'America' },
@@ -26,35 +22,6 @@ function Home() {
     { value: 'oceania', label: 'Oceania' },
   ];
 
-  function toggleTheme() {
-    setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' });
-  }
-
-  useEffect(() => {
-    async function getData() {
-      await api.get('all').then((response) => {
-        setCountries(response.data);
-      });
-    }
-    getData();
-  }, []);
-
-  /* async function handleSearchForCountry(event) {
-    event.preventDefault();
-    const response = await api.get(`name/${country}`);
-    const data = response.data;
-    setContentSelectedCountry(data);
-  }
-
-  async function handleSearchByRegion(event) {
-    event.preventDefault();
-    const response = await api.get(`region/${region.value}`);
-    const data = response.data;
-    setcontentSelectedRegion(data);
-    setCountries(contentSelectedRegion);
-  }
-  console.log({ contentSelectedRegion, region });
- */
   const customStyles = {
     placeholder: (base) => ({
       ...base,
@@ -91,30 +58,40 @@ function Home() {
     }),
   };
 
+  function toggleTheme() {
+    setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' });
+  }
+
+  useEffect(() => {
+    async function getData() {
+      await api.get('all').then((response) => {
+        setCountries(response.data);
+      });
+    }
+    getData();
+  }, []);
+
+  if (!countries) {
+    return <h1>Loading Countries</h1>;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Header toggleTheme={toggleTheme} />
       <Container>
         <div className="container-search">
-          <form /* onSubmit={handleSearchForCountry} */ className="input-area">
+          <form className="input-area">
             <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
-            <input
-              type="text"
-              placeholder="Search for a country"
-              /*               onChange={(e) => {
-                setCountry(e.target.value);
-              }} */
-            />
+            <input type="text" placeholder="Search for a country" />
           </form>
 
-          <form /* onSubmit={handleSearchByRegion} */>
+          <form>
             <div className="search-by-region">
               <Select
                 options={options}
                 styles={customStyles}
                 placeholder="Select region"
                 isSearchable
-                /*onChange={setRegion} */
               />
             </div>
           </form>
