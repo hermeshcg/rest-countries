@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import Select from 'react-select';
 
 import Header from '../../components/Header';
 
@@ -13,50 +12,8 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [theme, setTheme] = useState({ mode: 'dark' });
   const [countries, setCountries] = useState([{}]);
-
-  const options = [
-    { value: 'africa', label: 'Africa' },
-    { value: 'america', label: 'America' },
-    { value: 'asia', label: 'Asia' },
-    { value: 'europe', label: 'Europe' },
-    { value: 'oceania', label: 'Oceania' },
-  ];
-
-  const customStyles = {
-    placeholder: (base) => ({
-      ...base,
-      color: '#fff',
-      fontFamily: 'Nunito, sans-serif',
-    }),
-    control: (base, state) => ({
-      ...base,
-      background: 'hsl(209, 23%, 22%)',
-      // match with the menu
-      borderRadius: state.isFocused ? '3px 3px 0 0' : 3,
-      // Overwrittes the different states of border
-      color: '#fff',
-      border: 'none',
-      // Removes weird border around container
-      width: '200px',
-      height: '100%',
-    }),
-    option: (base) => ({
-      ...base,
-      // override border radius to match the box
-      borderRadius: 0,
-      // kill the gap
-      marginTop: 0,
-      width: '200px',
-      fontFamily: 'Nunito, sans-serif',
-      color: '#ccc',
-      background: 'hsl(207, 26%, 17%)',
-    }),
-    menuList: (base) => ({
-      ...base,
-      // kill the white space on first and last option
-      padding: 0,
-    }),
-  };
+  const [region, setRegion] = useState();
+  const [country, setCountry] = useState();
 
   function toggleTheme() {
     setTheme(theme.mode === 'dark' ? { mode: 'light' } : { mode: 'dark' });
@@ -71,6 +28,20 @@ function Home() {
     getData();
   }, []);
 
+  async function handleSearchForCountry(event) {
+    event.preventDefault();
+    await api.get(`name/${country}`).then((response) => {
+      setCountries(response.data);
+    });
+  }
+
+  async function handleSearchForRegion(event) {
+    event.preventDefault();
+    await api.get(`region/${region}`).then((response) => {
+      setCountries(response.data);
+    });
+  }
+
   if (!countries) {
     return <h1>Loading Countries</h1>;
   }
@@ -80,20 +51,24 @@ function Home() {
       <Header toggleTheme={toggleTheme} />
       <Container>
         <div className="container-search">
-          <form className="input-area">
+          <form className="input-area" onSubmit={handleSearchForCountry}>
             <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
-            <input type="text" placeholder="Search for a country" />
+            <input
+              placeholder="Search for a Country"
+              id="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
           </form>
 
-          <form>
-            <div className="search-by-region">
-              <Select
-                options={options}
-                styles={customStyles}
-                placeholder="Select region"
-                isSearchable
-              />
-            </div>
+          <form className="input-area" onSubmit={handleSearchForRegion}>
+            <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+            <input
+              placeholder="Search for a region"
+              id="region"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+            />
           </form>
         </div>
 

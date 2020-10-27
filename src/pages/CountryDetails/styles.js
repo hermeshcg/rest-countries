@@ -142,4 +142,64 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 800px) {
+    .country-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 50%;
+        height: 50%;
+        margin-bottom: 50px;
+      }
+
+      .right-side {
+        h1 {
+          margin-top: 120px;
+          margin-bottom: 40px;
+        }
+        .country-infos {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          .c1 {
+            width: 250px;
+            strong {
+              font-size: 20px;
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+          .c2 {
+            strong {
+              font-size: 20px;
+              span {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+        .border-countries {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          strong {
+            font-size: 20px;
+          }
+
+          .border-link {
+            padding: 5px;
+            margin: 5px 0;
+          }
+        }
+      }
+    }
+  }
 `;

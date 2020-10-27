@@ -18,6 +18,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-radius: 8px;
       height: 50px;
       width: 500px;
       padding-left: 30px;
@@ -78,6 +79,26 @@ export const Container = styled.div`
             props.theme.mode === 'dark' ? '#ccc' : 'hsl(200, 15%, 8%)'};
         }
       }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .container-search {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .input-area {
+        width: 90%;
+        margin: 10px 0;
+      }
+    }
+    .countries-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;
