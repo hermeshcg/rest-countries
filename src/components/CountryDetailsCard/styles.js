@@ -115,9 +115,9 @@ export const Container = styled.div`
       justify-content: center;
 
       img {
-        display: block;
-        width: 50%;
-        height: 50%;
+        width: 90%;
+        height: 150px;
+        object-fit: cover;
         margin-bottom: 100px;
       }
 
