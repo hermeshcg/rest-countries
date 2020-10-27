@@ -3,11 +3,11 @@ import { ThemeProvider } from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
 
 import Header from '../../components/Header';
+import CountriesCard from '../../components/CountriesCard';
 
 import api from '../../services/api';
 
 import { Container } from './styles';
-import { Link } from 'react-router-dom';
 
 function Home() {
   const [theme, setTheme] = useState({ mode: 'dark' });
@@ -72,28 +72,7 @@ function Home() {
           </form>
         </div>
 
-        <div className="countries-container">
-          {countries.map((country) => (
-            <Link
-              to={`/country/${country.name}`}
-              key={country.name}
-              className="country-card"
-            >
-              <img src={country.flag} alt={country.name} />
-
-              <h5>{country.name}</h5>
-              <strong>
-                Population: <span>{country.population}</span>
-              </strong>
-              <strong>
-                Region: <span>{country.region}</span>
-              </strong>
-              <strong>
-                Capital: <span>{country.capital}</span>
-              </strong>
-            </Link>
-          ))}
-        </div>
+        <CountriesCard countries={countries} />
       </Container>
     </ThemeProvider>
   );
