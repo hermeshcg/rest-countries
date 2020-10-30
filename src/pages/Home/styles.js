@@ -4,7 +4,7 @@ export const Container = styled.div`
   background: ${(props) =>
     props.theme.mode === 'dark' ? 'hsl(207, 26%, 17%)' : 'hsl(0, 0%, 100%)'};
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
 
   .container-search {
     padding: 30px 60px;
@@ -18,12 +18,27 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       border-radius: 8px;
       height: 50px;
       width: 500px;
-      padding-left: 30px;
       background: ${(props) =>
         props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
+      button {
+        height: 100%;
+        width: 10%;
+        border: none;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        background: ${(props) =>
+          props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
+      }
+
+      button:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+
       input {
         margin-left: 10px;
         height: 100%;

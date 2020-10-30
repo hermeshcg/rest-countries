@@ -50,11 +50,13 @@ function CountryDetailsCard({ country }) {
           </div>
           <div className="border-countries">
             <strong>Border Countries:</strong>
-            {country.borders.map((border) => (
-              <Link to={`/country/${border}`} className="border-link">
-                {border}
-              </Link>
-            ))}
+            <div className="border-link-container">
+              {country.borders.map((border) => (
+                <Link to={`/country/${border}`} className="border-link">
+                  {border}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

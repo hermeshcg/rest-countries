@@ -128,9 +128,9 @@ export const Container = styled.div`
         }
         .country-infos {
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
-          flex-direction: column;
           .c1 {
             width: 250px;
             strong {
@@ -141,6 +141,8 @@ export const Container = styled.div`
             }
           }
           .c2 {
+            margin-left: 0;
+            width: 100%;
             strong {
               font-size: 20px;
               span {
@@ -149,6 +151,7 @@ export const Container = styled.div`
             }
           }
         }
+
         .border-countries {
           display: flex;
           flex-direction: column;
@@ -159,9 +162,20 @@ export const Container = styled.div`
             font-size: 20px;
           }
 
+          .border-link-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+              '. . .'
+              '. . .'
+              '. . .';
+          }
           .border-link {
+            text-align: center;
             padding: 5px;
-            margin: 5px 0;
+            margin: 5px 5px;
           }
         }
       }

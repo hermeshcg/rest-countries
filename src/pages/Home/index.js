@@ -51,25 +51,29 @@ function Home() {
       <Header toggleTheme={toggleTheme} />
       <Container>
         <div className="container-search">
-          <form className="input-area" onSubmit={handleSearchForCountry}>
-            <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+          <div className="input-area">
+            <button type="button" onClick={handleSearchForCountry}>
+              <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+            </button>
             <input
               placeholder="Search for a Country"
               id="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             />
-          </form>
+          </div>
 
-          <form className="input-area" onSubmit={handleSearchForRegion}>
-            <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+          <div className="input-area">
+            <button type="button" onClick={handleSearchForRegion}>
+              <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+            </button>
             <input
               placeholder="Search for a region"
               id="region"
               value={region}
               onChange={(e) => setRegion(e.target.value)}
             />
-          </form>
+          </div>
         </div>
 
         <CountriesCard countries={countries} />

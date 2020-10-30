@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: ${(props) =>
     props.theme.mode === 'dark' ? 'hsl(209, 23%, 22%)' : '#ddd'};
-  width: 100%;
+  min-width: 100vw;
   height: 100px;
   color: ${(props) =>
     props.theme.mode === 'dark' ? 'hsl(0, 0%, 100%)' : 'hsl(200, 15%, 8%)'};
@@ -22,6 +22,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding-right: 2%;
     p {
       padding-left: 10px;
     }
