@@ -1,6 +1,6 @@
 # Frontend Mentor - REST Countries API with color theme switcher
 
-![You can view the site here](https://rest-countries-wheat.vercel.app)
+[You can view the site here](https://rest-countries-wheat.vercel.app)
 
 ## Welcome! 👋
 
