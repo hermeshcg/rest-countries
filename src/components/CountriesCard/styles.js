@@ -12,6 +12,9 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: center;
       text-align: center;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 1px 1px 3px #121212;
       width: 240px;
       margin: 20px;
       justify-content: center;
@@ -28,7 +31,7 @@ export const Container = styled.div`
           props.theme.mode === 'dark'
             ? 'hsl(0, 0%, 100%)'
             : 'hsl(200, 15%, 8%)'};
-        padding-bottom: 10px;
+        margin: 10px 0;
       }
       strong {
         padding-bottom: 10px;
@@ -50,6 +53,8 @@ export const Container = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      margin: 10px 10px 0 10px;
     }
   }
 `;

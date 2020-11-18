@@ -124,7 +124,6 @@ export const Container = styled.div`
       .right-side {
         h1 {
           margin-top: 120px;
-          margin-bottom: 40px;
         }
         .country-infos {
           display: flex;
@@ -166,11 +165,6 @@ export const Container = styled.div`
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
-            gap: 0px 0px;
-            grid-template-areas:
-              '. . .'
-              '. . .'
-              '. . .';
           }
           .border-link {
             text-align: center;

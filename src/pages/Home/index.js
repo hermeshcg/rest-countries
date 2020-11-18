@@ -37,9 +37,12 @@ function Home() {
 
   async function handleSearchForRegion(event) {
     event.preventDefault();
-    await api.get(`region/${region}`).then((response) => {
-      setCountries(response.data);
-    });
+    await api
+      .get(`region/${region}`)
+      .then((response) => {
+        setCountries(response.data);
+      })
+      .catch((error) => alert('Region data not available'));
   }
 
   if (!countries) {
@@ -51,31 +54,34 @@ function Home() {
       <Header toggleTheme={toggleTheme} />
       <Container>
         <div className="container-search">
-          <div className="input-area">
-            <button type="button" onClick={handleSearchForCountry}>
-              <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
-            </button>
-            <input
-              placeholder="Search for a Country"
-              id="country"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </div>
+          <form onSubmit={handleSearchForCountry}>
+            <div className="input-area">
+              <button type="button" onClick={handleSearchForCountry}>
+                <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+              </button>
+              <input
+                placeholder="Search for a Country"
+                id="country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              />
+            </div>
+          </form>
 
-          <div className="input-area">
-            <button type="button" onClick={handleSearchForRegion}>
-              <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
-            </button>
-            <input
-              placeholder="Search for a region"
-              id="region"
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-            />
-          </div>
+          <form onSubmit={handleSearchForRegion}>
+            <div className="input-area">
+              <button type="button" onClick={handleSearchForRegion}>
+                <FaSearch color={theme.mode === 'dark' ? '#fff' : '#121212'} />
+              </button>
+              <input
+                placeholder="Search for a region"
+                id="region"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+              />
+            </div>
+          </form>
         </div>
-
         <CountriesCard countries={countries} />
       </Container>
     </ThemeProvider>
