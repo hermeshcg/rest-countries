@@ -13,8 +13,13 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  h1 {
+  .linkTitle {
     padding-left: 40px;
+    color: ${(props) =>
+      props.theme.mode === 'dark' ? 'hsl(0, 0%, 100%)' : 'hsl(200, 15%, 8%)'};
+    text-decoration: none;
+    font: 26px Nunito, sans-serif;
+    font-weight: bold;
   }
 
   .theme {

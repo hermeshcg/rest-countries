@@ -14,7 +14,7 @@ export const Container = styled.div`
       text-align: center;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
-      box-shadow: 1px 1px 3px #121212;
+      box-shadow: 0 1px 3px #121212;
       width: 240px;
       margin: 20px;
       justify-content: center;

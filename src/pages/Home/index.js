@@ -10,7 +10,7 @@ import api from '../../services/api';
 import { Container } from './styles';
 
 function Home() {
-  const [theme, setTheme] = useState({ mode: 'dark' });
+  const [theme, setTheme] = useState({ mode: 'light' });
   const [countries, setCountries] = useState([{}]);
   const [region, setRegion] = useState();
   const [country, setCountry] = useState();
