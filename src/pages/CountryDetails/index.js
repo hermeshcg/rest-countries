@@ -12,7 +12,7 @@ import CountryDetailsCard from '../../components/CountryDetailsCard';
 
 function Home() {
   const { name } = useParams();
-  const [theme, setTheme] = useState({ mode: 'dark' });
+  const [theme, setTheme] = useState({ mode: 'light' });
   const [country, setCountry] = useState();
 
   useEffect(() => {

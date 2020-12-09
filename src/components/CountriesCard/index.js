@@ -17,7 +17,10 @@ function CountriesCard({ countries }) {
 
             <h5>{country.name}</h5>
             <strong>
-              Population: <span>{country.population}</span>
+              Population:{' '}
+              <span>
+                {Intl.NumberFormat('pt-BR').format(country.population)}
+              </span>
             </strong>
             <strong>
               Region: <span>{country.region}</span>

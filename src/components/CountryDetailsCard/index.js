@@ -16,7 +16,10 @@ function CountryDetailsCard({ country }) {
                 Native Name: <span>{country.nativeName}</span>
               </strong>
               <strong>
-                Population: <span>{country.population}</span>
+                Population:{' '}
+                <span>
+                  {Intl.NumberFormat('pt-BR').format(country.population)}
+                </span>
               </strong>
               <strong>
                 Region: <span>{country.region}</span>
